@@ -35,9 +35,9 @@ class MainActivity : ComponentActivity() {
 fun preview() {
     //Esto son de ejemplo, mas tarde se pasara a una lista.
     var day1 =
-        Day(1, "Dia1", painterResource(R.drawable.ic_launcher_foreground), "Descripcion dia1", 1)
+        Day(1, "Dia1", painterResource(R.drawable.ic_launcher_foreground), "Descripcion dia1", )
     var day2 =
-        Day(2, "Dia2", painterResource(R.drawable.ic_launcher_foreground), "Descripcion Dia2", 2)
+        Day(2, "Dia2", painterResource(R.drawable.ic_launcher_foreground), "Descripcion Dia2", )
     Surface(
         modifier = Modifier.fillMaxSize(),
 

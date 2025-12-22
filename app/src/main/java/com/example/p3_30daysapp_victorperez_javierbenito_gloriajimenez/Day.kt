@@ -5,6 +5,6 @@ import androidx.compose.ui.graphics.painter.Painter
 
 class Day (
     val numDia: Int,
-    val titulo: String, @DrawableRes img: Painter, val desc: String, val link: Int
+    val titulo: String, @DrawableRes img: Painter, val desc: String,
 ){
 }
