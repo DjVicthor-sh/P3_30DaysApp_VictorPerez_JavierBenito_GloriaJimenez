@@ -1,3 +1,42 @@
 <resources>
     <string name="app_name">P3_30DaysApp_VictorPerez_JavierBenito_GloriaJimenez</string>
+    <string name="animal_01">Animal 1</string>
+    <string name="animal_02">Animal 2</string>
+    <string name="animal_03">Animal 3</string>
+    <string name="animal_04">Animal 4</string>
+    <string name="animal_05">Animal 5</string>
+    <string name="animal_06">Animal 6</string>
+    <string name="animal_07">Animal 7</string>
+    <string name="animal_08">Animal 8</string>
+    <string name="animal_09">Animal 9</string>
+    <string name="animal_10">Animal 10</string>
+    <string name="animal_11">Animal 11</string>
+    <string name="animal_12">Animal 12</string>
+    <string name="animal_13">Animal 13</string>
+    <string name="animal_14">Animal 14</string>
+    <string name="animal_15">Animal 15</string>
+    <string name="animal_16">Animal 16</string>
+    <string name="animal_17">Animal 17</string>
+    <string name="animal_18">Animal 18</string>
+    <string name="animal_19">Animal 19</string>
+    <string name="animal_20">Animal 20</string>
+    <string name="animal_21">Animal 21</string>
+    <string name="animal_22">Animal 22</string>
+    <string name="animal_23">Animal 23</string>
+    <string name="animal_24">Animal 24</string>
+    <string name="animal_25">Animal 25</string>
+    <string name="animal_26">Animal 26</string>
+    <string name="animal_27">Animal 27</string>
+    <string name="animal_28">Animal 28</string>
+    <string name="animal_29">Animal 29</string>
+    <string name="animal_30">Animal 30</string>
+
+
+
+
+
+
+
+
+
 </resources>

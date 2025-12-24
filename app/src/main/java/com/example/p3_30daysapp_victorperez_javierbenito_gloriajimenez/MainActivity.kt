@@ -1,24 +1,31 @@
 package com.example.p3_30daysapp_victorperez_javierbenito_gloriajimenez
 
 import android.os.Bundle
-import android.view.Surface
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.Card
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-
+import com.example.p3_30daysapp_victorperez_javierbenito_gloriajimenez.data.DaySource
+import com.example.p3_30daysapp_victorperez_javierbenito_gloriajimenez.model.Day
+import com.example.p3_30daysapp_victorperez_javierbenito_gloriajimenez.ui.theme.P3_30DaysApp_VictorPerez_JavierBenito_GloriaJimenezTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,63 +33,60 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
 
+            P3_30DaysApp_VictorPerez_JavierBenito_GloriaJimenezTheme {
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+                    color = MaterialTheme.colorScheme.background
+                ) {
+                    DaysListApp()
+                }
+            }
         }
     }
 }
 
-@Preview
+//muestra la lista de tarjetas de dias
 @Composable
-fun preview() {
-    //Esto son de ejemplo, mas tarde se pasara a una lista.
-    var day1 =
-        Day(1, "Dia1", painterResource(R.drawable.ic_launcher_foreground), "Descripcion dia1", )
-    var day2 =
-        Day(2, "Dia2", painterResource(R.drawable.ic_launcher_foreground), "Descripcion Dia2", )
-    Surface(
-        modifier = Modifier.fillMaxSize(),
-
-        ) {
-
-        tarjetaDia(day1)
+fun DaysListApp() {
+    LazyColumn(modifier = Modifier.padding(16.dp)) {
+        items(DaySource.days) { day ->
+            DayCard(day = day, modifier = Modifier.padding(bottom = 16.dp))
+        }
     }
-
 }
-//Esta funcion es la encargada de hacer cada tarjeta individual.
+
+
+//muestra una tarjeta de dia
 @Composable
-fun tarjetaDia(day: Day, modifier: Modifier = Modifier) {
-
-    Column(
-        modifier = modifier.padding(
-            bottom = 24.dp
-        ),
-        horizontalAlignment = Alignment.CenterHorizontally
-
-    ) {
-        Image(
-            painter = painterResource(R.drawable.ic_launcher_foreground),
-            contentDescription = null,
-        )
-    
-    Row(
-
-
-
-    ) {
-        Text(
-            text = "${day.numDia}"
-        )
-        Text(
-            text = "${day.titulo}"
-        )
+fun DayCard(day: Day, modifier: Modifier = Modifier) {
+    Card(modifier = modifier) {
+        Column {
+            Text(
+                text = "Día ${day.dias}",
+                style = MaterialTheme.typography.titleLarge,
+                modifier = Modifier.padding(start = 16.dp, top = 16.dp, end = 16.dp)
+            )
+            Text(
+                text = stringResource(id = day.name),
+                style = MaterialTheme.typography.bodyLarge,
+                modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 8.dp)
+            )
+            Image(
+                painter = painterResource(id = day.ImageRes),
+                contentDescription = stringResource(id = day.name),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(194.dp),
+                contentScale = ContentScale.Crop
+            )
+        }
     }
-
-}
 }
 
-//Esta funcion organizara las distintas tarjetasDia dando el aspecto final
+@Preview(showBackground = true)
 @Composable
-fun mainView(modifier: Modifier = Modifier) {
-
+fun DaysListPreview() {
+    P3_30DaysApp_VictorPerez_JavierBenito_GloriaJimenezTheme {
+        DaysListApp()
+    }
 }
-
-
