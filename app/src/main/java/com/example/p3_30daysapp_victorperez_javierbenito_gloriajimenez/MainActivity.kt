@@ -112,6 +112,10 @@ fun DayCard(day: Day, modifier: Modifier = Modifier) {
                 style = MaterialTheme.typography.bodyLarge,
                 modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 8.dp)
             )
+            Text(
+                text = stringResource(id = day.description),
+                modifier = modifier.padding(start = 16.dp, end = 16.dp, bottom = 8.dp)
+            )
         }
     }
 }
