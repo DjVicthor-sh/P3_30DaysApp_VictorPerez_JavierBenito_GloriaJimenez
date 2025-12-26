@@ -7,5 +7,6 @@ import androidx.annotation.StringRes
 data class Day(
     @StringRes val name: Int,
     val dias: Int,
-    @DrawableRes val ImageRes: Int
+    @DrawableRes val ImageRes: Int,
+    //val description: String
 )
