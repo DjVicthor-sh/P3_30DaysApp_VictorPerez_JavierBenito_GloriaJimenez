@@ -9,20 +9,16 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Menu
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Card
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.NavigationBar
-import androidx.compose.material3.NavigationRailItem
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -83,7 +79,12 @@ fun DayCard(day: Day, modifier: Modifier = Modifier) {
     Card(
         modifier = modifier
             .animateContentSize()
-            .height(if (expanded) 400.dp else 280.dp)
+            .height(
+                if (expanded) {
+                    400.dp
+                } else 280.dp
+
+            )
             .fillMaxWidth()
             .clickable(
                 interactionSource = remember { MutableInteractionSource() },
@@ -92,7 +93,7 @@ fun DayCard(day: Day, modifier: Modifier = Modifier) {
                 expanded = !expanded
             }
     ) {
-        Column {
+        Column() {
 
             Image(
                 painter = painterResource(id = day.ImageRes),
@@ -112,10 +113,16 @@ fun DayCard(day: Day, modifier: Modifier = Modifier) {
                 style = MaterialTheme.typography.bodyLarge,
                 modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 8.dp)
             )
+
             Text(
                 text = stringResource(id = day.description),
-                modifier = modifier.padding(start = 16.dp, end = 16.dp, bottom = 8.dp)
+                modifier = modifier
+                    .padding(start = 16.dp, end = 16.dp, bottom = 8.dp)
+                    .verticalScroll(
+                        rememberScrollState()
+                    )
             )
+
         }
     }
 }
