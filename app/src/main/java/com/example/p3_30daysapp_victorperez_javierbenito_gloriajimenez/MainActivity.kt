@@ -67,18 +67,40 @@ class MainActivity : ComponentActivity() {
 fun DaysListApp() {
     Surface(
         modifier = Modifier
+
     ) {
-        Column() {
-            Column(modifier = Modifier
-                .padding(top = 24.dp)
+        Column(
+            modifier = Modifier
+
+
+        ) {
+
+            Column(
+                modifier = Modifier
+                    .height(700.dp)
+            ) {
+
+                LazyColumn(modifier = Modifier.padding(16.dp)) {
+                    items(DaySource.days) { day ->
+                        DayCard(day = day, modifier = Modifier.padding(bottom = 16.dp))
+                    }
+                }
+            }
+
+            Column(
+                modifier = Modifier
+
 
             ) {
+
 
                 NavigationBar(
                     modifier = Modifier
 
 
                 ) {
+
+
                     NavigationBarItem(
                         icon = {
                             Icon(
@@ -100,14 +122,6 @@ fun DaysListApp() {
                         onClick = {}
                     )
 
-                }
-            }
-            Column(modifier = Modifier) {
-
-                LazyColumn(modifier = Modifier.padding(16.dp)) {
-                    items(DaySource.days) { day ->
-                        DayCard(day = day, modifier = Modifier.padding(bottom = 16.dp))
-                    }
                 }
             }
         }
