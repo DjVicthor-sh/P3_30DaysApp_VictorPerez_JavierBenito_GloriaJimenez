@@ -1,43 +1,65 @@
 <resources>
     <string name="app_name">P3_30DaysApp_VictorPerez_JavierBenito_GloriaJimenez</string>
-    <string name="animal_01">Animal 1</string>
-    <string name="descAnimal_01">Descripcion del animal 1 asdasdasdasdasdasdadfwgshgbdfdfgbdfbdfbsadvbasdfbdafbadfbadfvasdfbafdbadfbadfbadfbadfbadfbdfabadfbdafbdfabadfbadfbdafbadfbadfbadfbadfbadfbdfbadfbdfbdfbdfbbdffbdfbaadfbasfdbasedfhbasdfbasdadasdasdadadadasdadasd</string>
-    <string name="animal_02">Animal 2</string>
-    <string name="animal_03">Animal 3</string>
-    <string name="animal_04">Animal 4</string>
-    <string name="animal_05">Animal 5</string>
-    <string name="animal_06">Animal 6</string>
-    <string name="animal_07">Animal 7</string>
-    <string name="animal_08">Animal 8</string>
-    <string name="animal_09">Animal 9</string>
-    <string name="animal_10">Animal 10</string>
-    <string name="animal_11">Animal 11</string>
-    <string name="animal_12">Animal 12</string>
-    <string name="animal_13">Animal 13</string>
-    <string name="animal_14">Animal 14</string>
-    <string name="animal_15">Animal 15</string>
-    <string name="animal_16">Animal 16</string>
-    <string name="animal_17">Animal 17</string>
-    <string name="animal_18">Animal 18</string>
-    <string name="animal_19">Animal 19</string>
-    <string name="animal_20">Animal 20</string>
-    <string name="animal_21">Animal 21</string>
-    <string name="animal_22">Animal 22</string>
-    <string name="animal_23">Animal 23</string>
-    <string name="animal_24">Animal 24</string>
-    <string name="animal_25">Animal 25</string>
-    <string name="animal_26">Animal 26</string>
-    <string name="animal_27">Animal 27</string>
-    <string name="animal_28">Animal 28</string>
-    <string name="animal_29">Animal 29</string>
-    <string name="animal_30">Animal 30</string>
 
+    <string name="animal_01">Pastor Australiano</string>
+    <string name="animal_02">Golden Retriever</string>
+    <string name="animal_03">Labrador Retriever</string>
+    <string name="animal_04">Yorkshire Terrier</string>
+    <string name="animal_05">Cachorro de Golden</string>
+    <string name="animal_06">Corgi Galés</string>
+    <string name="animal_07">Pequeño Mestizo</string>
+    <string name="animal_08">Jack Russell Terrier</string>
+    <string name="animal_09">Cachorro Negro</string>
+    <string name="animal_10">Teckel (Dachshund)</string>
+    <string name="animal_11">Terrier Mix</string>
+    <string name="animal_12">Border Collie</string>
+    <string name="animal_13">Beagle</string>
+    <string name="animal_14">Pug (Carlino)</string>
+    <string name="animal_15">Samoyedo</string>
+    <string name="animal_16">Caniche (Poodle)</string>
+    <string name="animal_17">Braco de Weimar</string>
+    <string name="animal_18">Husky Siberiano</string>
+    <string name="animal_19">Pastor Belga Mix</string>
+    <string name="animal_20">Bulldog Francés</string>
+    <string name="animal_21">Galgo Afgano</string>
+    <string name="animal_22">Pastor Alemán</string>
+    <string name="animal_23">Mestizo con Pañuelo</string>
+    <string name="animal_24">Collie de Pelo Largo</string>
+    <string name="animal_25">Pitbull Terrier</string>
+    <string name="animal_26">Braco Cachorro</string>
+    <string name="animal_27">Corgi Pembroke</string>
+    <string name="animal_28">Husky de Ojos Azules</string>
+    <string name="animal_29">Chihuahua</string>
+    <string name="animal_30">Boyero de Berna</string>
 
-
-
-
-
-
-
-
+    <string name="descAnimal_01">Un perro muy inteligente, enérgico y protector con su familia.</string>
+    <string name="descAnimal_02">Famoso por su temperamento amable, amigable y gran inteligencia.</string>
+    <string name="descAnimal_03">Excelente nadador y compañero leal, muy popular en todo el mundo.</string>
+    <string name="descAnimal_04">Pequeño pero valiente, con un pelaje sedoso y mucha personalidad.</string>
+    <string name="descAnimal_05">Los cachorros de esta raza son curiosos y necesitan mucho afecto.</string>
+    <string name="descAnimal_06">Perro de pastoreo pequeño con patas cortas y orejas muy grandes.</string>
+    <string name="descAnimal_07">Un compañero único que destaca por su alegría y fidelidad absoluta.</string>
+    <string name="descAnimal_08">Cazador incansable, muy activo y siempre listo para una aventura.</string>
+    <string name="descAnimal_09">Este pequeño cachorro destaca por su pelaje oscuro y mirada tierna.</string>
+    <string name="descAnimal_10">Conocido como perro salchicha, es valiente y un gran rastreador.</string>
+    <string name="descAnimal_11">Un perro ágil y juguetón que disfruta mucho de los espacios abiertos.</string>
+    <string name="descAnimal_12">Considerado el perro más inteligente del mundo, ideal para el trabajo.</string>
+    <string name="descAnimal_13">Rastreador nato con un gran olfato y orejas largas muy suaves.</string>
+    <string name="descAnimal_14">Un perro pequeño con cara arrugada que ama dormir y estar en casa.</string>
+    <string name="descAnimal_15">Perro de nieve con pelaje blanco esponjoso y una sonrisa natural.</string>
+    <string name="descAnimal_16">Elegante y muy listo, se adapta perfectamente a la vida en ciudad.</string>
+    <string name="descAnimal_17">Un perro de caza atlético con un distintivo color gris plateado.</string>
+    <string name="descAnimal_18">Originario de climas fríos, es un perro aullador y muy resistente.</string>
+    <string name="descAnimal_19">Un guardián atento con pelaje oscuro y gran capacidad de aprendizaje.</string>
+    <string name="descAnimal_20">Pequeño bulldog de orejas de murciélago, muy cariñoso y tranquilo.</string>
+    <string name="descAnimal_21">Destaca por su pelo largo y sedoso, siendo una raza muy aristocrática.</string>
+    <string name="descAnimal_22">Un perro de trabajo ejemplar, leal, valiente y muy obediente.</string>
+    <string name="descAnimal_23">Este perrito se ve adorable con su accesorio y está listo para jugar.</string>
+    <string name="descAnimal_24">Raza de pastoreo famosa por su belleza y su gran instinto familiar.</string>
+    <string name="descAnimal_25">Fuerte y atlético, es un perro muy apegado a sus dueños humanos.</string>
+    <string name="descAnimal_26">Los cachorros de Braco son activos y requieren ejercicio constante.</string>
+    <string name="descAnimal_27">Un Corgi muy alegre que siempre está atento a lo que pasa alrededor.</string>
+    <string name="descAnimal_28">Su mirada intensa y su energía lo hacen un perro realmente especial.</string>
+    <string name="descAnimal_29">El perro más pequeño del mundo, con un carácter muy vivaz y alerta.</string>
+    <string name="descAnimal_30">Un gigante bondadoso de las montañas con pelaje tricolor y grueso.</string>
 </resources>
