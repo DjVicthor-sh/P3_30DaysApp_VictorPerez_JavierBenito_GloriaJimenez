@@ -13,15 +13,14 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.AccountCircle
-import androidx.compose.material.icons.filled.Menu
-import androidx.compose.material3.BottomAppBar
+import androidx.compose.material.icons.filled.Face
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -65,19 +64,23 @@ class MainActivity : ComponentActivity() {
 //muestra la lista de tarjetas de dias
 @Composable
 fun DaysListApp() {
+
     Surface(
         modifier = Modifier
+        //.padding(top = 24.dp)
 
     ) {
         Column(
             modifier = Modifier
-
+                .fillMaxSize()
 
         ) {
 
+
             Column(
                 modifier = Modifier
-                    .height(700.dp)
+
+                    .weight(5f)
             ) {
 
                 LazyColumn(modifier = Modifier.padding(16.dp)) {
@@ -89,42 +92,59 @@ fun DaysListApp() {
 
             Column(
                 modifier = Modifier
-
+                    .weight(1f)
 
             ) {
 
+                navigationBar()
 
-                NavigationBar(
-                    modifier = Modifier
-
-
-                ) {
-
-
-                    NavigationBarItem(
-                        icon = {
-                            Icon(
-                                imageVector = Icons.Default.Menu,
-                                contentDescription = null
-                            )
-                        },
-                        selected = true,
-                        onClick = {}
-                    )
-                    NavigationBarItem(
-                        icon = {
-                            Icon(
-                                imageVector = Icons.Default.AccountCircle,
-                                contentDescription = null
-                            )
-                        },
-                        selected = true,
-                        onClick = {}
-                    )
-
-                }
             }
         }
+
+    }
+}
+
+@Composable
+fun navigationBar() {
+    NavigationBar(
+        modifier = Modifier
+
+
+    ) {
+
+
+        NavigationBarItem(
+            icon = {
+                Icon(
+                    imageVector = Icons.Default.Person,
+                    contentDescription = null
+                )
+            },
+            selected = true,
+            onClick = {}
+        )
+
+        NavigationBarItem(
+            icon = {
+                Icon(
+                    imageVector = Icons.Default.Face,
+                    contentDescription = null
+                )
+            },
+            selected = true,
+            onClick = {}
+        )
+
+        NavigationBarItem(
+            icon = {
+                Icon(
+                    imageVector = Icons.Default.Favorite,
+                    contentDescription = null
+                )
+            },
+            selected = true,
+            onClick = {}
+        )
 
     }
 }
@@ -159,13 +179,20 @@ fun DayCard(day: Day, modifier: Modifier = Modifier) {
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(194.dp),
-                contentScale = ContentScale.Crop
+
+                contentScale = ContentScale.FillBounds //Escalamos la imagen para las imagenes con distinto aspect ratio
             )
+
+
             Text(
                 text = "Día ${day.dias}",
                 style = MaterialTheme.typography.titleLarge,
                 modifier = Modifier.padding(start = 16.dp, top = 16.dp, end = 16.dp)
             )
+
+
+
+
             Text(
                 text = stringResource(id = day.name),
                 style = MaterialTheme.typography.bodyLarge,
@@ -180,19 +207,21 @@ fun DayCard(day: Day, modifier: Modifier = Modifier) {
                         rememberScrollState()
                     )
             )
-
         }
+
+
     }
 }
+
 
 @Preview(
     showBackground = true,
     showSystemUi = true,
-
-    )
+)
 @Composable
 fun DaysListPreview() {
     P3_30DaysApp_VictorPerez_JavierBenito_GloriaJimenezTheme {
         DaysListApp()
+
     }
 }

@@ -9,4 +9,5 @@ data class Day(
     val dias: Int,
     @DrawableRes val ImageRes: Int,
     @StringRes val description: Int,
+
 )
