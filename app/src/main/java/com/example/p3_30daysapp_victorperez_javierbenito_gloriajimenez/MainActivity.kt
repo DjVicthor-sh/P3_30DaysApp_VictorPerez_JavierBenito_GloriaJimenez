@@ -43,6 +43,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.p3_30daysapp_victorperez_javierbenito_gloriajimenez.data.DogLists
@@ -112,6 +113,7 @@ fun DaysListApp() {
                             dog = dog,
                             initiallyFavorited = DogLists.favorite.contains(dog),
                             isFavorite = isfavorite ,
+                            isFemaleList =  lista == DogLists.female,
                             modifier = Modifier.padding(bottom = 16.dp),
                         )
                     }
@@ -133,7 +135,8 @@ fun DaysListApp() {
                         icon = {
                             Icon(
                                 painter = painterResource(R.drawable.male_24px),
-                                contentDescription = null
+                                contentDescription = null,
+                                tint = Color(0xFF2196F3)
                             )
                         },
                         selected = true,
@@ -148,7 +151,8 @@ fun DaysListApp() {
                         icon = {
                             Icon(
                                 painter = painterResource(R.drawable.female_24px),
-                                contentDescription = null
+                                contentDescription = null,
+                                tint = Color(0xFFCB718F)
                             )
                         },
                         selected = true,
@@ -159,7 +163,8 @@ fun DaysListApp() {
                         icon = {
                             Icon(
                                 imageVector = Icons.Default.Favorite,
-                                contentDescription = null
+                                contentDescription = null,
+                                tint= Color(0xFFB9160A)
                             )
                         },
                         selected = true,
@@ -181,6 +186,7 @@ fun DayCard(
     dog: Dog,
     modifier: Modifier = Modifier,
     initiallyFavorited: Boolean = false,
+    isFemaleList: Boolean = false,
     isFavorite: (Dog, Boolean) -> Unit
 ) {
     var expanded by remember { mutableStateOf(false) }
@@ -230,14 +236,18 @@ fun DayCard(
                         text = "Día ${dog.dias}",
                         style = MaterialTheme.typography.titleLarge,
                         modifier = Modifier.padding(start = 16.dp, top = 16.dp, end = 16.dp),
-                        color = MaterialTheme.colorScheme.primary
+                        color = if (isFemaleList) {
+                            Color(0xFFCB718F)
+                        } else Color(0xFF2196F3),
+                        fontWeight = FontWeight.Bold
                     )
 
 
 
                     Text(
                         text = stringResource(id = dog.name),
-                        style = MaterialTheme.typography.bodyLarge,
+                        style = MaterialTheme.typography.titleLarge,
+                        fontWeight = FontWeight.Bold,
                         modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 8.dp)
                     )
                 }
