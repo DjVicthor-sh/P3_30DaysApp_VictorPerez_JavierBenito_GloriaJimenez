@@ -35,7 +35,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -44,8 +43,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.p3_30daysapp_victorperez_javierbenito_gloriajimenez.data.DaySource
-import com.example.p3_30daysapp_victorperez_javierbenito_gloriajimenez.model.Day
+import com.example.p3_30daysapp_victorperez_javierbenito_gloriajimenez.data.DogLists
+import com.example.p3_30daysapp_victorperez_javierbenito_gloriajimenez.model.Dog
 import com.example.p3_30daysapp_victorperez_javierbenito_gloriajimenez.ui.theme.P3_30DaysApp_VictorPerez_JavierBenito_GloriaJimenezTheme
 
 class MainActivity : ComponentActivity() {
@@ -71,14 +70,14 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DaysListApp() {
 
-    var lista by remember { mutableStateOf(DaySource.days) }
+    var lista by remember { mutableStateOf(DogLists.male) }
 
-    val isfavorite: (Day, Boolean) -> Unit = { day, isFav ->
+    val isfavorite: (Dog, Boolean) -> Unit = { dog, isFav ->
         if (isFav) {
-            if (!DaySource.favorite.contains(day))
-                DaySource.favorite.add(day)
+            if (!DogLists.favorite.contains(dog))
+                DogLists.favorite.add(dog)
         } else {
-            DaySource.favorite.remove(day)
+            DogLists.favorite.remove(dog)
         }
     }
 
@@ -102,11 +101,11 @@ fun DaysListApp() {
             ) {
 
                 LazyColumn(modifier = Modifier.padding(16.dp)) {
-                    items(lista) { day ->
+                    items(lista) { dog ->
                         DayCard(
-                            day = day,
-                            initiallyFavorited = DaySource.favorite.contains(day),
-                            isFavorite = isfavorite,
+                            dog = dog,
+                            initiallyFavorited = DogLists.favorite.contains(dog),
+                            isFavorite = isfavorite ,
                             modifier = Modifier.padding(bottom = 16.dp),
                         )
                     }
@@ -135,7 +134,7 @@ fun DaysListApp() {
                         },
                         selected = true,
                         onClick = {
-                            lista = DaySource.days
+                            lista = DogLists.male
 
 
                         }
@@ -149,7 +148,7 @@ fun DaysListApp() {
                             )
                         },
                         selected = true,
-                        onClick = { lista = DaySource.female }
+                        onClick = { lista = DogLists.female }
                     )
 
                     NavigationBarItem(
@@ -160,7 +159,7 @@ fun DaysListApp() {
                             )
                         },
                         selected = true,
-                        onClick = { lista = DaySource.favorite.toList() }
+                        onClick = { lista = DogLists.favorite.toList() }
                     )
 
                 }
@@ -175,13 +174,13 @@ fun DaysListApp() {
 //muestra una tarjeta de dia
 @Composable
 fun DayCard(
-    day: Day,
+    dog: Dog,
     modifier: Modifier = Modifier,
     initiallyFavorited: Boolean = false,
-    isFavorite: (Day, Boolean) -> Unit
+    isFavorite: (Dog, Boolean) -> Unit
 ) {
     var expanded by remember { mutableStateOf(false) }
-    var isToggled by rememberSaveable { mutableStateOf(initiallyFavorited) }
+    var isToggled by remember { mutableStateOf(initiallyFavorited) }
     Card(
         modifier = modifier
             .animateContentSize()
@@ -199,11 +198,11 @@ fun DayCard(
                 expanded = !expanded
             }
     ) {
-        Column() {
+        Column {
 
             Image(
-                painter = painterResource(id = day.ImageRes),
-                contentDescription = stringResource(id = day.name),
+                painter = painterResource(id = dog.ImageRes),
+                contentDescription = stringResource(id = dog.name),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(194.dp),
@@ -216,9 +215,9 @@ fun DayCard(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
-                Column() {
+                Column {
                     Text(
-                        text = "Día ${day.dias}",
+                        text = "Día ${dog.dias}",
                         style = MaterialTheme.typography.titleLarge,
                         modifier = Modifier.padding(start = 16.dp, top = 16.dp, end = 16.dp)
                     )
@@ -226,7 +225,7 @@ fun DayCard(
 
 
                     Text(
-                        text = stringResource(id = day.name),
+                        text = stringResource(id = dog.name),
                         style = MaterialTheme.typography.bodyLarge,
                         modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 8.dp)
                     )
@@ -237,7 +236,7 @@ fun DayCard(
                     onClick = {
                         isToggled = !isToggled
 
-                        isFavorite(day, isToggled)
+                        isFavorite(dog, isToggled)
                     }
                 ) {
                     Icon(
@@ -258,7 +257,7 @@ fun DayCard(
 
 
         Text(
-            text = stringResource(id = day.description),
+            text = stringResource(id = dog.description),
             modifier = modifier
                 .padding(start = 16.dp, end = 16.dp, bottom = 8.dp)
                 .verticalScroll(
