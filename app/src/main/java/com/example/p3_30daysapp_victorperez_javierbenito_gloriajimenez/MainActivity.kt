@@ -8,11 +8,14 @@ import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
@@ -20,6 +23,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Face
 import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -32,6 +36,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -128,7 +133,7 @@ fun DaysListApp() {
                             )
                         },
                         selected = true,
-                        onClick = {lista = DaySource.female}
+                        onClick = { lista = DaySource.female }
                     )
 
                     NavigationBarItem(
@@ -139,7 +144,7 @@ fun DaysListApp() {
                             )
                         },
                         selected = true,
-                        onClick = {lista = DaySource.favorite}
+                        onClick = { lista = DaySource.favorite }
                     )
 
                 }
@@ -149,8 +154,6 @@ fun DaysListApp() {
 
     }
 }
-
-
 
 
 //muestra una tarjeta de dia
@@ -185,35 +188,56 @@ fun DayCard(day: Day, modifier: Modifier = Modifier) {
 
                 contentScale = ContentScale.FillBounds //Escalamos la imagen para las imagenes con distinto aspect ratio
             )
-
-
-            Text(
-                text = "Día ${day.dias}",
-                style = MaterialTheme.typography.titleLarge,
-                modifier = Modifier.padding(start = 16.dp, top = 16.dp, end = 16.dp)
-            )
-
-
-
-
-            Text(
-                text = stringResource(id = day.name),
-                style = MaterialTheme.typography.bodyLarge,
-                modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 8.dp)
-            )
-
-            Text(
-                text = stringResource(id = day.description),
-                modifier = modifier
-                    .padding(start = 16.dp, end = 16.dp, bottom = 8.dp)
-                    .verticalScroll(
-                        rememberScrollState()
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp, vertical = 8.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                Column() {
+                    Text(
+                        text = "Día ${day.dias}",
+                        style = MaterialTheme.typography.titleLarge,
+                        modifier = Modifier.padding(start = 16.dp, top = 16.dp, end = 16.dp)
                     )
-            )
+
+
+
+                    Text(
+                        text = stringResource(id = day.name),
+                        style = MaterialTheme.typography.bodyLarge,
+                        modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 8.dp)
+                    )
+                }
+                Icon(
+                    imageVector = Icons.Default.FavoriteBorder,
+                    contentDescription = null,
+                    Modifier.size(48.dp)
+                )
+            }
+
+
+
+
+
         }
 
 
+
+
+
+        Text(
+            text = stringResource(id = day.description),
+            modifier = modifier
+                .padding(start = 16.dp, end = 16.dp, bottom = 8.dp)
+                .verticalScroll(
+                    rememberScrollState()
+                )
+        )
     }
+
+
 }
 
 
