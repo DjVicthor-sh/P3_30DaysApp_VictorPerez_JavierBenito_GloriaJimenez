@@ -21,7 +21,6 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Face
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material3.Card
@@ -74,12 +73,11 @@ fun DaysListApp() {
 
     var lista by remember { mutableStateOf(DaySource.days) }
 
-    val isfavorite:(Day, Boolean) -> Unit ={
-        day, isFav ->
-        if(isFav){
+    val isfavorite: (Day, Boolean) -> Unit = { day, isFav ->
+        if (isFav) {
             if (!DaySource.favorite.contains(day))
                 DaySource.favorite.add(day)
-        }else  {
+        } else {
             DaySource.favorite.remove(day)
         }
     }
@@ -110,7 +108,7 @@ fun DaysListApp() {
                             initiallyFavorited = DaySource.favorite.contains(day),
                             isFavorite = isfavorite,
                             modifier = Modifier.padding(bottom = 16.dp),
-                            )
+                        )
                     }
                 }
             }
@@ -131,7 +129,7 @@ fun DaysListApp() {
                     NavigationBarItem(
                         icon = {
                             Icon(
-                                imageVector = Icons.Default.Face,
+                                painter = painterResource(R.drawable.male_24px),
                                 contentDescription = null
                             )
                         },
@@ -146,7 +144,7 @@ fun DaysListApp() {
                     NavigationBarItem(
                         icon = {
                             Icon(
-                                imageVector = Icons.Default.Face,
+                                painter = painterResource(R.drawable.female_24px),
                                 contentDescription = null
                             )
                         },
@@ -239,11 +237,11 @@ fun DayCard(
                     onClick = {
                         isToggled = !isToggled
 
-                        isFavorite(day,isToggled)
+                        isFavorite(day, isToggled)
                     }
                 ) {
                     Icon(
-                        imageVector = if (!isToggled) Icons.Default.FavoriteBorder else Icons.Default.Favorite ,
+                        imageVector = if (!isToggled) Icons.Default.FavoriteBorder else Icons.Default.Favorite,
                         contentDescription = null,
                         Modifier.size(36.dp)
                     )
