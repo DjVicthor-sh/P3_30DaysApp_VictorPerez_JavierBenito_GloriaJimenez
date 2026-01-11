@@ -7,7 +7,6 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -49,7 +48,6 @@ import androidx.compose.ui.unit.dp
 import com.example.p3_30daysapp_victorperez_javierbenito_gloriajimenez.data.DogLists
 import com.example.p3_30daysapp_victorperez_javierbenito_gloriajimenez.model.Dog
 import com.example.p3_30daysapp_victorperez_javierbenito_gloriajimenez.ui.theme.P3_30DaysApp_VictorPerez_JavierBenito_GloriaJimenezTheme
-import kotlinx.coroutines.selects.select
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -109,6 +107,8 @@ fun DaysListApp() {
                         .padding(16.dp)
 
                 ) {
+                    // Aqui tuvimos que usar una key para que se sepa exactamente que perro es cada uno
+                    // y no nos de fallos visuales a la hora de navegar entre listas
                     items(lista, key = { it.name }) { dog ->
                         DayCard(
                             dog = dog,
@@ -190,6 +190,8 @@ fun DayCard(
     isFemaleList: Boolean = false,
     isFavorite: (Dog, Boolean) -> Unit
 ) {
+    //'expanded' controla si la tarjeta está abierta o cerrada
+    //'isToggled' controla si el corazón está relleno
     var expanded by remember { mutableStateOf(false) }
     var isToggled by remember(dog.name) { mutableStateOf(initiallyFavorited) }
     Card(
@@ -204,7 +206,7 @@ fun DayCard(
         Column() {
 
             Image(
-                painter = painterResource(id = dog.ImageRes),
+                painter = painterResource(id = dog.imageRes),
                 contentDescription = stringResource(id = dog.name),
                 modifier = Modifier
                     .fillMaxWidth()
@@ -213,6 +215,8 @@ fun DayCard(
                             264.dp
                         } else 194.dp
                     )
+                    // si la tarjeta no está expandida, la desenfocamos con blur
+                    // al abrirla, el blur baja a 0 y se ve la foto nítida
                     .blur(
                         if (expanded) {
                             0.dp

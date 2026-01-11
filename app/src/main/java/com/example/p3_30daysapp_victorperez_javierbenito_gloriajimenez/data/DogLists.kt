@@ -3,8 +3,9 @@ package com.example.p3_30daysapp_victorperez_javierbenito_gloriajimenez.data
 import com.example.p3_30daysapp_victorperez_javierbenito_gloriajimenez.R
 import com.example.p3_30daysapp_victorperez_javierbenito_gloriajimenez.model.Dog
 
-// es la lista que contiene los 30 dias
+// Las 3 listas que contiene los 30 perros filtrados por macho, hembra y favoritos
 object DogLists {
+    // 15 primerps seran machos
     val male = listOf<Dog>(
         Dog(R.string.animal_01, 1, R.drawable.perro_01, R.string.descAnimal_01),
         Dog(R.string.animal_02, 2, R.drawable.perro_02, R.string.descAnimal_02),
@@ -22,6 +23,8 @@ object DogLists {
         Dog(R.string.animal_14, 14, R.drawable.perro_14, R.string.descAnimal_14),
         Dog(R.string.animal_15, 15, R.drawable.perro_15, R.string.descAnimal_15),
     )
+
+    // El resto hembras, del 16 al 30
     val female = listOf<Dog>(
         Dog(R.string.animal_16, 1, R.drawable.perro_16, R.string.descAnimal_16),
         Dog(R.string.animal_17, 2, R.drawable.perro_17, R.string.descAnimal_17),
