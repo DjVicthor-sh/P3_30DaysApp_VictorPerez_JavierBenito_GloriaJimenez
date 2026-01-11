@@ -40,7 +40,7 @@ object DaySource {
         Day(R.string.animal_30, 15, R.drawable.perro_30, R.string.descAnimal_30)
     )
 
-    val favorite = listOf<Day>(
+    val favorite = mutableListOf<Day> (
 
     )
 }

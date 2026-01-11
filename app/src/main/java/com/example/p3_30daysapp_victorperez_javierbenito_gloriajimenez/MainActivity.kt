@@ -26,6 +26,7 @@ import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
@@ -35,6 +36,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -72,6 +74,17 @@ fun DaysListApp() {
 
     var lista by remember { mutableStateOf(DaySource.days) }
 
+    val isfavorite:(Day, Boolean) -> Unit ={
+        day, isFav ->
+        if(isFav){
+            if (!DaySource.favorite.contains(day))
+                DaySource.favorite.add(day)
+        }else  {
+            DaySource.favorite.remove(day)
+        }
+    }
+
+
     Surface(
         modifier = Modifier
             .padding(top = 24.dp)
@@ -92,7 +105,12 @@ fun DaysListApp() {
 
                 LazyColumn(modifier = Modifier.padding(16.dp)) {
                     items(lista) { day ->
-                        DayCard(day = day, modifier = Modifier.padding(bottom = 16.dp))
+                        DayCard(
+                            day = day,
+                            initiallyFavorited = DaySource.favorite.contains(day),
+                            isFavorite = isfavorite,
+                            modifier = Modifier.padding(bottom = 16.dp),
+                            )
                     }
                 }
             }
@@ -144,7 +162,7 @@ fun DaysListApp() {
                             )
                         },
                         selected = true,
-                        onClick = { lista = DaySource.favorite }
+                        onClick = { lista = DaySource.favorite.toList() }
                     )
 
                 }
@@ -158,8 +176,14 @@ fun DaysListApp() {
 
 //muestra una tarjeta de dia
 @Composable
-fun DayCard(day: Day, modifier: Modifier = Modifier) {
+fun DayCard(
+    day: Day,
+    modifier: Modifier = Modifier,
+    initiallyFavorited: Boolean = false,
+    isFavorite: (Day, Boolean) -> Unit
+) {
     var expanded by remember { mutableStateOf(false) }
+    var isToggled by rememberSaveable { mutableStateOf(initiallyFavorited) }
     Card(
         modifier = modifier
             .animateContentSize()
@@ -185,7 +209,6 @@ fun DayCard(day: Day, modifier: Modifier = Modifier) {
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(194.dp),
-
                 contentScale = ContentScale.FillBounds //Escalamos la imagen para las imagenes con distinto aspect ratio
             )
             Row(
@@ -210,15 +233,24 @@ fun DayCard(day: Day, modifier: Modifier = Modifier) {
                         modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 8.dp)
                     )
                 }
-                Icon(
-                    imageVector = Icons.Default.FavoriteBorder,
-                    contentDescription = null,
-                    Modifier.size(48.dp)
-                )
+
+                IconButton(
+
+                    onClick = {
+                        isToggled = !isToggled
+
+                        isFavorite(day,isToggled)
+                    }
+                ) {
+                    Icon(
+                        imageVector = if (!isToggled) Icons.Default.FavoriteBorder else Icons.Default.Favorite ,
+                        contentDescription = null,
+                        Modifier.size(36.dp)
+                    )
+
+                }
+
             }
-
-
-
 
 
         }
