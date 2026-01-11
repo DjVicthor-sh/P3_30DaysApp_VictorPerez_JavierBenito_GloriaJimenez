@@ -1,3 +1,5 @@
+// Victor Perez, Gloria Jimena y Javier Benito
+
 package com.example.p3_30daysapp_victorperez_javierbenito_gloriajimenez.model
 
 import androidx.annotation.DrawableRes
