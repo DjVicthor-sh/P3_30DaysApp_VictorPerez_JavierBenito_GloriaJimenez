@@ -7,7 +7,6 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -99,7 +98,6 @@ fun DaysListApp() {
 
             Column(
                 modifier = Modifier
-
                     .weight(5f)
             ) {
 
@@ -112,8 +110,8 @@ fun DaysListApp() {
                         DayCard(
                             dog = dog,
                             initiallyFavorited = DogLists.favorite.contains(dog),
-                            isFavorite = isfavorite ,
-                            isFemaleList =  lista == DogLists.female,
+                            isFavorite = isfavorite,
+                            isFemaleList = lista == DogLists.female,
                             modifier = Modifier.padding(bottom = 16.dp),
                         )
                     }
@@ -164,7 +162,7 @@ fun DaysListApp() {
                             Icon(
                                 imageVector = Icons.Default.Favorite,
                                 contentDescription = null,
-                                tint= Color(0xFFB9160A)
+                                tint = Color(0xFFB9160A)
                             )
                         },
                         selected = true,
@@ -192,7 +190,7 @@ fun DayCard(
     var expanded by remember { mutableStateOf(false) }
     var isToggled by remember(dog.name) { mutableStateOf(initiallyFavorited) }
     Card(
-        modifier = modifier
+        modifier = Modifier
             .animateContentSize()
             .fillMaxWidth()
             .clickable {
@@ -207,17 +205,18 @@ fun DayCard(
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(
-                        if (expanded){
+                        if (expanded) {
                             264.dp
                         } else 194.dp
                     )
                     .blur(
-                        if (expanded){
+                        if (expanded) {
                             0.dp
-                        }else{
+                        } else {
                             8.dp
                         }
                     )
+
                 ,
                 contentScale = ContentScale.Crop,
                 alignment = Alignment.TopCenter
@@ -242,8 +241,6 @@ fun DayCard(
                         fontWeight = FontWeight.Bold
                     )
 
-
-
                     Text(
                         text = stringResource(id = dog.name),
                         style = MaterialTheme.typography.titleLarge,
@@ -263,7 +260,7 @@ fun DayCard(
                     Icon(
                         imageVector = if (!isToggled) Icons.Default.FavoriteBorder else Icons.Default.Favorite,
                         contentDescription = null,
-                        tint = if(isToggled) Color(0xFFCC2519) else MaterialTheme.colorScheme.onSurfaceVariant,
+                        tint = if (isToggled) Color(0xFFCC2519) else MaterialTheme.colorScheme.onSurfaceVariant,
                         modifier = Modifier.size(36.dp)
                     )
 
@@ -274,16 +271,12 @@ fun DayCard(
 
         }
 
-
-
-
-
         Text(
             text = stringResource(id = dog.description),
-            modifier = modifier
+            modifier = Modifier
                 .padding(start = 16.dp, end = 16.dp, bottom = 8.dp)
                 .height(
-                    if (expanded){
+                    if (expanded) {
                         150.dp
                     } else 0.dp
                 )

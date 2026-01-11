@@ -5,9 +5,10 @@ import androidx.annotation.StringRes
 
 //modelo de datos para los dias que tendra el nombre, el numero de dia y la imagen
 data class Dog(
+
     @StringRes val name: Int,
     val dias: Int,
     @DrawableRes val ImageRes: Int,
     @StringRes val description: Int,
 
-)
+    )

@@ -21,7 +21,7 @@ object DogLists {
         Dog(R.string.animal_13, 13, R.drawable.perro_13, R.string.descAnimal_13),
         Dog(R.string.animal_14, 14, R.drawable.perro_14, R.string.descAnimal_14),
         Dog(R.string.animal_15, 15, R.drawable.perro_15, R.string.descAnimal_15),
-        )
+    )
     val female = listOf<Dog>(
         Dog(R.string.animal_16, 1, R.drawable.perro_16, R.string.descAnimal_16),
         Dog(R.string.animal_17, 2, R.drawable.perro_17, R.string.descAnimal_17),
@@ -40,7 +40,7 @@ object DogLists {
         Dog(R.string.animal_30, 15, R.drawable.perro_30, R.string.descAnimal_30)
     )
 
-    val favorite = mutableListOf<Dog> (
+    val favorite = mutableListOf<Dog>(
 
     )
 }
