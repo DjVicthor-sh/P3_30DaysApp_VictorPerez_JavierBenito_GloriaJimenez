@@ -38,6 +38,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -119,9 +120,7 @@ fun DaysListApp() {
             ) {
 
                 NavigationBar(
-                    modifier = Modifier
-
-
+                    containerColor = MaterialTheme.colorScheme.surfaceVariant
                 ) {
 
 
@@ -184,29 +183,25 @@ fun DayCard(
     Card(
         modifier = modifier
             .animateContentSize()
-            .height(
-                if (expanded) {
-                    400.dp
-                } else 280.dp
-
-            )
             .fillMaxWidth()
-            .clickable(
-                interactionSource = remember { MutableInteractionSource() },
-                indication = null
-            ) {
+            .clickable {
                 expanded = !expanded
             }
     ) {
-        Column {
+        Column() {
 
             Image(
                 painter = painterResource(id = dog.ImageRes),
                 contentDescription = stringResource(id = dog.name),
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(194.dp),
-                contentScale = ContentScale.FillBounds //Escalamos la imagen para las imagenes con distinto aspect ratio
+                    .height(
+                        if (expanded) 250.dp else 194.dp
+                    ),
+                contentScale = ContentScale.Crop,
+                alignment = Alignment.TopCenter
+
+
             )
             Row(
                 modifier = Modifier
@@ -215,11 +210,12 @@ fun DayCard(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
-                Column {
+                Column() {
                     Text(
                         text = "Día ${dog.dias}",
                         style = MaterialTheme.typography.titleLarge,
-                        modifier = Modifier.padding(start = 16.dp, top = 16.dp, end = 16.dp)
+                        modifier = Modifier.padding(start = 16.dp, top = 16.dp, end = 16.dp),
+                        color = MaterialTheme.colorScheme.primary
                     )
 
 
@@ -242,7 +238,8 @@ fun DayCard(
                     Icon(
                         imageVector = if (!isToggled) Icons.Default.FavoriteBorder else Icons.Default.Favorite,
                         contentDescription = null,
-                        Modifier.size(36.dp)
+                        tint = if(isToggled) Color(0xFFCC2519) else MaterialTheme.colorScheme.onSurfaceVariant,
+                        modifier = Modifier.size(36.dp)
                     )
 
                 }
