@@ -191,6 +191,7 @@ fun DayCard(
     var isToggled by remember(dog.name) { mutableStateOf(initiallyFavorited) }
     Card(
         modifier = Modifier
+            .padding(bottom = 8.dp)
             .animateContentSize()
             .fillMaxWidth()
             .clickable {
