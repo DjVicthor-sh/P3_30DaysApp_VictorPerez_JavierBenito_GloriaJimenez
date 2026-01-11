@@ -190,7 +190,7 @@ fun DayCard(
     isFavorite: (Dog, Boolean) -> Unit
 ) {
     var expanded by remember { mutableStateOf(false) }
-    var isToggled by remember { mutableStateOf(initiallyFavorited) }
+    var isToggled by remember(dog.name) { mutableStateOf(initiallyFavorited) }
     Card(
         modifier = modifier
             .animateContentSize()
