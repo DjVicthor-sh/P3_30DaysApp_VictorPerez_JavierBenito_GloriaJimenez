@@ -38,6 +38,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.blur
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -101,7 +102,11 @@ fun DaysListApp() {
                     .weight(5f)
             ) {
 
-                LazyColumn(modifier = Modifier.padding(16.dp)) {
+                LazyColumn(
+                    modifier = Modifier
+                        .padding(16.dp)
+
+                ) {
                     items(lista) { dog ->
                         DayCard(
                             dog = dog,
@@ -196,8 +201,18 @@ fun DayCard(
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(
-                        if (expanded) 250.dp else 194.dp
-                    ),
+                        if (expanded){
+                            264.dp
+                        } else 194.dp
+                    )
+                    .blur(
+                        if (expanded){
+                            0.dp
+                        }else{
+                            8.dp
+                        }
+                    )
+                ,
                 contentScale = ContentScale.Crop,
                 alignment = Alignment.TopCenter
 
@@ -257,6 +272,11 @@ fun DayCard(
             text = stringResource(id = dog.description),
             modifier = modifier
                 .padding(start = 16.dp, end = 16.dp, bottom = 8.dp)
+                .height(
+                    if (expanded){
+                        150.dp
+                    } else 0.dp
+                )
                 .verticalScroll(
                     rememberScrollState()
                 )
