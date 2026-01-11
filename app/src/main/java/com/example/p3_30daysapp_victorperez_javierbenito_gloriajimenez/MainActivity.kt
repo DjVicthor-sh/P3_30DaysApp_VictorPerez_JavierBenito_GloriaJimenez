@@ -7,6 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -48,6 +49,7 @@ import androidx.compose.ui.unit.dp
 import com.example.p3_30daysapp_victorperez_javierbenito_gloriajimenez.data.DogLists
 import com.example.p3_30daysapp_victorperez_javierbenito_gloriajimenez.model.Dog
 import com.example.p3_30daysapp_victorperez_javierbenito_gloriajimenez.ui.theme.P3_30DaysApp_VictorPerez_JavierBenito_GloriaJimenezTheme
+import kotlinx.coroutines.selects.select
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,7 +60,7 @@ class MainActivity : ComponentActivity() {
             P3_30DaysApp_VictorPerez_JavierBenito_GloriaJimenezTheme {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
+                    color = Color(0xFFFFF3E0)
                 ) {
                     DaysListApp()
                 }
@@ -98,6 +100,7 @@ fun DaysListApp() {
 
             Column(
                 modifier = Modifier
+
                     .weight(5f)
             ) {
 
@@ -110,8 +113,8 @@ fun DaysListApp() {
                         DayCard(
                             dog = dog,
                             initiallyFavorited = DogLists.favorite.contains(dog),
-                            isFavorite = isfavorite,
-                            isFemaleList = lista == DogLists.female,
+                            isFavorite = isfavorite ,
+                            isFemaleList =  DogLists.female.contains(dog),
                             modifier = Modifier.padding(bottom = 16.dp),
                         )
                     }
@@ -137,7 +140,7 @@ fun DaysListApp() {
                                 tint = Color(0xFF2196F3)
                             )
                         },
-                        selected = true,
+                        selected = lista == DogLists.male,
                         onClick = {
                             lista = DogLists.male
 
@@ -153,7 +156,7 @@ fun DaysListApp() {
                                 tint = Color(0xFFCB718F)
                             )
                         },
-                        selected = true,
+                        selected = lista == DogLists.female,
                         onClick = { lista = DogLists.female }
                     )
 
@@ -165,7 +168,7 @@ fun DaysListApp() {
                                 tint = Color(0xFFB9160A)
                             )
                         },
-                        selected = true,
+                        selected = lista == DogLists.favorite,
                         onClick = { lista = DogLists.favorite.toList() }
                     )
 
@@ -271,6 +274,10 @@ fun DayCard(
 
 
         }
+
+
+
+
 
         Text(
             text = stringResource(id = dog.description),
