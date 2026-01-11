@@ -5,7 +5,7 @@ import com.example.p3_30daysapp_victorperez_javierbenito_gloriajimenez.model.Day
 
 // es la lista que contiene los 30 dias
 object DaySource {
-    val days = listOf(
+    val days = listOf<Day>(
         Day(R.string.animal_01, 1, R.drawable.perro_01, R.string.descAnimal_01),
         Day(R.string.animal_02, 2, R.drawable.perro_02, R.string.descAnimal_02),
         Day(R.string.animal_03, 3, R.drawable.perro_03, R.string.descAnimal_03),
@@ -19,6 +19,9 @@ object DaySource {
         Day(R.string.animal_11, 11, R.drawable.perro_11, R.string.descAnimal_11),
         Day(R.string.animal_12, 12, R.drawable.perro_12, R.string.descAnimal_12),
         Day(R.string.animal_13, 13, R.drawable.perro_13, R.string.descAnimal_13),
+
+    )
+    val female = listOf<Day>(
         Day(R.string.animal_14, 14, R.drawable.perro_14, R.string.descAnimal_14),
         Day(R.string.animal_15, 15, R.drawable.perro_15, R.string.descAnimal_15),
         Day(R.string.animal_16, 16, R.drawable.perro_16, R.string.descAnimal_16),
@@ -36,5 +39,9 @@ object DaySource {
         Day(R.string.animal_28, 28, R.drawable.perro_28, R.string.descAnimal_28),
         Day(R.string.animal_29, 29, R.drawable.perro_29, R.string.descAnimal_29),
         Day(R.string.animal_30, 30, R.drawable.perro_30, R.string.descAnimal_30)
+    )
+
+    val favorite = listOf<Day>(
+
     )
 }

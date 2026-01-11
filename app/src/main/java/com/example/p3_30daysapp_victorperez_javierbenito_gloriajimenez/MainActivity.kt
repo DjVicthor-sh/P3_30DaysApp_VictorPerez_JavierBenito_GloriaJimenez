@@ -20,7 +20,6 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Face
 import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -61,13 +60,16 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+
 //muestra la lista de tarjetas de dias
 @Composable
 fun DaysListApp() {
 
+    var lista by remember { mutableStateOf(DaySource.days) }
+
     Surface(
         modifier = Modifier
-        //.padding(top = 24.dp)
+            .padding(top = 24.dp)
 
     ) {
         Column(
@@ -84,7 +86,7 @@ fun DaysListApp() {
             ) {
 
                 LazyColumn(modifier = Modifier.padding(16.dp)) {
-                    items(DaySource.days) { day ->
+                    items(lista) { day ->
                         DayCard(day = day, modifier = Modifier.padding(bottom = 16.dp))
                     }
                 }
@@ -96,7 +98,51 @@ fun DaysListApp() {
 
             ) {
 
-                navigationBar()
+                NavigationBar(
+                    modifier = Modifier
+
+
+                ) {
+
+
+                    NavigationBarItem(
+                        icon = {
+                            Icon(
+                                imageVector = Icons.Default.Face,
+                                contentDescription = null
+                            )
+                        },
+                        selected = true,
+                        onClick = {
+                            lista = DaySource.days
+
+
+                        }
+                    )
+
+                    NavigationBarItem(
+                        icon = {
+                            Icon(
+                                imageVector = Icons.Default.Face,
+                                contentDescription = null
+                            )
+                        },
+                        selected = true,
+                        onClick = {lista = DaySource.female}
+                    )
+
+                    NavigationBarItem(
+                        icon = {
+                            Icon(
+                                imageVector = Icons.Default.Favorite,
+                                contentDescription = null
+                            )
+                        },
+                        selected = true,
+                        onClick = {lista = DaySource.favorite}
+                    )
+
+                }
 
             }
         }
@@ -104,50 +150,7 @@ fun DaysListApp() {
     }
 }
 
-@Composable
-fun navigationBar() {
-    NavigationBar(
-        modifier = Modifier
 
-
-    ) {
-
-
-        NavigationBarItem(
-            icon = {
-                Icon(
-                    imageVector = Icons.Default.Person,
-                    contentDescription = null
-                )
-            },
-            selected = true,
-            onClick = {}
-        )
-
-        NavigationBarItem(
-            icon = {
-                Icon(
-                    imageVector = Icons.Default.Face,
-                    contentDescription = null
-                )
-            },
-            selected = true,
-            onClick = {}
-        )
-
-        NavigationBarItem(
-            icon = {
-                Icon(
-                    imageVector = Icons.Default.Favorite,
-                    contentDescription = null
-                )
-            },
-            selected = true,
-            onClick = {}
-        )
-
-    }
-}
 
 
 //muestra una tarjeta de dia
