@@ -107,7 +107,7 @@ fun DaysListApp() {
                         .padding(16.dp)
 
                 ) {
-                    items(lista) { dog ->
+                    items(lista, key = { it.name }) { dog ->
                         DayCard(
                             dog = dog,
                             initiallyFavorited = DogLists.favorite.contains(dog),
